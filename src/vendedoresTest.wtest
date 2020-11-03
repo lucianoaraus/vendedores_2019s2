@@ -1,0 +1,39 @@
+import vendedores.*
+
+test "comercioCorresponsal" {
+	
+	//Sucursal #1
+	const buenosAires = new Provincia(poblacion = 3000000)
+	
+	const chivilcoy = new Ciudad(provincia = buenosAires)
+	const bragado = new Ciudad(provincia = buenosAires)
+	const lobos = new Ciudad(provincia = buenosAires)
+	const pergamino = new Ciudad(provincia = buenosAires)
+	const zarate = new Ciudad(provincia = buenosAires)
+	
+	const comercioCorresponsal1 = new ComercioCorresponsal(certificaciones = [], ciudadesConSucursales = [chivilcoy, bragado, lobos, pergamino, zarate])
+	
+	assert.that(comercioCorresponsal1.esInfluyente())
+
+	//Sucursal #2
+	const santaFe = new Provincia(poblacion = 3000000)
+	const cordoba = new Provincia(poblacion = 3000000)
+	const entreRios = new Provincia(poblacion = 3000000)
+	
+	const rosario = new Ciudad(provincia = santaFe)
+	const rafaela = new Ciudad(provincia = santaFe)
+	const sanFrancisco = new Ciudad(provincia = cordoba)
+	const diamante = new Ciudad(provincia = entreRios)
+	
+	const comercioCorresponsal2 = new ComercioCorresponsal(certificaciones = [], ciudadesConSucursales = [rosario, rafaela, sanFrancisco, diamante])
+	
+	assert.that(comercioCorresponsal2.esInfluyente())
+	
+	//Sucursal #3	
+	const amstrong = new Ciudad(provincia = santaFe)
+	
+	const comercioCorresponsal3 = new ComercioCorresponsal(certificaciones = [], ciudadesConSucursales = [rosario, rafaela, amstrong, diamante])
+	
+	assert.notThat(comercioCorresponsal3.esInfluyente())
+	
+}
